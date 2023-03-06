@@ -7,7 +7,7 @@ const Mentee = () => {
     return (
         <Layout> 
             <SideBar 
-            main='text-sky-900 border-transparent'
+            main='text-sky-900 '
             activeMentee='border-orange-600'
             activeTextMentee='text-orange-500'
             />

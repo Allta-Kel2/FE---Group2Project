@@ -8,9 +8,9 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children, mode }) => {
     return (
         <div
-        className={`flex flex-col min-h-screen ${mode ? "bg-black" : "bg-white"}`}
+        className={`flex min-h-screen ${mode ? "bg-black" : "bg-white"}`}
         >
-        <div className="flex-1">{children}</div>
+        <div className="flex flex-rows w-screen">{children}</div>
         </div>
     );
 };
