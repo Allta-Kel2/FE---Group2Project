@@ -34,8 +34,8 @@ const SideBar:FC<SidebarProps> = ({
     handleToClass
 }) => {
     return (
-        <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
-            <div className="fixed flex flex-col top-0 left-0 w-80 bg-white h-full border-r">
+        <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased w-80 bg-gray-50 text-gray-8000 m-0 ">
+            <div className="fixed flex flex-col top-0 left-0 w-80 bg-white shadow-lg h-full border-r">
                 <div className="flex items-center justify-center mt-4">
                 <img src={logo} className='w-56' alt="Girl in a jacket" />
                 </div>
@@ -50,7 +50,7 @@ const SideBar:FC<SidebarProps> = ({
                                 <path d="M18.75 12.75h1.5a.75.75 0 000-1.5h-1.5a.75.75 0 000 1.5zM12 6a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 0112 6zM12 18a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 0112 18zM3.75 6.75h1.5a.75.75 0 100-1.5h-1.5a.75.75 0 000 1.5zM5.25 18.75h-1.5a.75.75 0 010-1.5h1.5a.75.75 0 010 1.5zM3 12a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 013 12zM9 3.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zM12.75 12a2.25 2.25 0 114.5 0 2.25 2.25 0 01-4.5 0zM9 15.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" />
                             </svg>
                         </span>
-                        <span className={`ml-5 text-xl tracking-wide truncate ${activeTextDashboard}`}>Dashboard</span>
+                        <span className={`ml-5 text-xl font-semibold tracking-wide truncate ${activeTextDashboard}`}>Dashboard</span>
                     </a>
                     </li>
                     <li>
@@ -64,7 +64,7 @@ const SideBar:FC<SidebarProps> = ({
                             <path d="M4.462 19.462c.42-.419.753-.89 1-1.394.453.213.902.434 1.347.661a6.743 6.743 0 01-1.286 1.794.75.75 0 11-1.06-1.06z" />
                         </svg>
                         </span>
-                        <span className={`ml-5 text-xl tracking-wide truncate ${activeTextMentee}`}>Mentee</span>
+                        <span className={`ml-5 text-xl font-semibold tracking-wide truncate ${activeTextMentee}`}>Mentee</span>
                     </a>
                     </li>
                     <li>
@@ -76,7 +76,7 @@ const SideBar:FC<SidebarProps> = ({
                                 <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" />
                             </svg>
                         </span>
-                        <span className={`ml-5 text-xl tracking-wide truncate ${activeTextUser}`}>User</span>
+                        <span className={`ml-5 text-xl font-semibold tracking-wide truncate ${activeTextUser}`}>User</span>
                     </a>
                     </li>
                     <li>
@@ -90,17 +90,17 @@ const SideBar:FC<SidebarProps> = ({
                             <path d="M12 7.875a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" />
                         </svg>
                         </span>
-                        <span className={`ml-5 text-xl tracking-wide truncate ${activeTextClass}`}>Class</span>
+                        <span className={`ml-5 text-xl font-semibold tracking-wide truncate ${activeTextClass}`}>Class</span>
                     </a>
                     </li>
                     <li>
-                    <a href="#" className={`${main}relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 hover:text-orange-500 border-l-4 border-transparent hover:border-orange-500 pr-6`}>
+                    <a href="#" className={`text-sky-900 relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 hover:text-orange-500 border-l-4 border-transparent hover:border-orange-500 pr-6`}>
                         <span className="inline-flex justify-center items-center ml-4">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                                 <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z" clipRule="evenodd" />
                             </svg>
                         </span>
-                        <span className="ml-5 text-xl  tracking-wide truncate">Logout</span>
+                        <span className="ml-5 text-xl font-semibold tracking-wide truncate">Logout</span>
                     </a>
                     </li>
                 </ul>

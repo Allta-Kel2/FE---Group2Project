@@ -7,7 +7,7 @@ const ClassPage = () => {
     return (
         <Layout> 
             <SideBar 
-            main='text-sky-900 border-transparent'
+            main='text-sky-900'
             activeClass='border-orange-600'
             activeTextClass='text-orange-500'
             />

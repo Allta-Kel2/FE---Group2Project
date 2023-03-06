@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
         <Layout> 
             <SideBar 
-            main='text-sky-900 border-transparent'
+            main='text-sky-900'
             activeDashboard='border-orange-600'
             activeTextDashboard='text-orange-500'
             />
