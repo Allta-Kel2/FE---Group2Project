@@ -6,6 +6,9 @@ import { CookiesProvider } from "react-cookie";
 
 import Dashboard from './page/dashboard';
 import UserList from './page/user';
+import Mentee from './page/mentee';
+import ClassPage from './page/class';
+
 
 function App() {
 
@@ -15,6 +18,8 @@ function App() {
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/user" element={<UserList />} />
+          <Route path="/mentee" element={<Mentee />} />
+          <Route path="/class" element={<ClassPage />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
