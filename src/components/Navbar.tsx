@@ -15,7 +15,7 @@ const Navbar = () => {
                 </Link>
             </section>
             <section className='navbar-end gap-3'>
-               Hii Admin! 
+                Hii Admin! 
             </section>
         </div>
     )
