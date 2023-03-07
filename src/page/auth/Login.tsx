@@ -21,7 +21,7 @@ const Login = () => {
                                         fontSize: "1.75em",
                                         fontWeight: "700",
                                         textAlign: "center",
-                                        color: "#4A33D9",
+                                        color: "#053260",
                                         }}
                                     >
                                         Login To You Account
