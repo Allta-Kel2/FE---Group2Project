@@ -33,3 +33,4 @@ function Table<T>({ data, columns }: TableProps<T>) {
         </table>
     );
 }
+export default Table

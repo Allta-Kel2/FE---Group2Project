@@ -15,6 +15,7 @@ interface SidebarProps{
     handleToUser?: React.MouseEventHandler
     handleToMentee?: React.MouseEventHandler
     handleToClass?: React.MouseEventHandler
+    responsive?: boolean
 }
 
 
@@ -31,11 +32,12 @@ const SideBar:FC<SidebarProps> = ({
     handleToDashboard,
     handleToMentee,
     handleToUser,
-    handleToClass
+    handleToClass,
+    responsive
 }) => {
     return (
-        <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased w-80 bg-gray-50 text-gray-8000 m-0 ">
-            <div className="fixed flex flex-col top-0 left-0 w-80 bg-white shadow-lg h-full border-r">
+        <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-8000 m-0 ">
+            <div className={`${responsive ? "hidden" : "fixed"} fixed Sflex flex-col top-0 left-0 w-80 bg-white shadow-lg h-full border-r`}>
                 <div className="flex items-center justify-center mt-4">
                 <img src={logo} className='w-56' alt="Girl in a jacket" />
                 </div>

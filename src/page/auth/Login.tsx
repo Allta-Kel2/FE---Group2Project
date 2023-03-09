@@ -101,7 +101,7 @@ const Login = () => {
                                         <span className="label-text">Password</span>
                                     </label>
                                     <input
-                                        type="text"
+                                        type="password"
                                         placeholder="******"
                                         className="input input-bordered input-primary w-full bg-white"
                                         style={{ border: "4px soluid #F47522" }}
