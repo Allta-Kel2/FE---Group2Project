@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { CookiesProvider } from "react-cookie";
+import { CookiesProvider, useCookies, removeCookies } from "react-cookie";
 import axios from "axios";
 
 import Login from './page/auth/Login';
