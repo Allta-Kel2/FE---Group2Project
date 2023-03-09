@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { CookiesProvider, useCookies, removeCookies } from "react-cookie";
+import { CookiesProvider, useCookies } from "react-cookie";
 import axios from "axios";
 
 import Login from './page/auth/Login';
@@ -9,6 +9,7 @@ import Dashboard from './page/dashboard';
 import UserList from './page/user';
 import Mentee from './page/mentee';
 import ClassPage from './page/class';
+import EditUser from './page/editUser';
 
 axios.defaults.baseURL = "https://app1.mindd.site/";
 
@@ -33,7 +34,7 @@ function App() {
         data === "Missing or malformed JWT" ||
         [401, 403].includes(data.code)
       ) {
-        removeCookie("token");
+        removeCookie("token", {path:"/"});
       }
       return Promise.reject(error);
     }
@@ -48,6 +49,7 @@ function App() {
           <Route path="/user" element={<UserList />} />
           <Route path="/mentee" element={<Mentee />} />
           <Route path="/class" element={<ClassPage />} />
+          <Route path="/editUser/:full_name" element={<EditUser />}/>
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

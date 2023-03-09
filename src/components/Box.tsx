@@ -1,11 +1,9 @@
 import React,{FC} from 'react'
 
-import UserList from './UserList'
-
 interface BoxProps{
     children?: React.ReactNode
     handleToAddUser?: React.MouseEventHandler
-    adminAdd: string
+    adminAdd?: string
 }
 
 const Box:FC<BoxProps> = ({children, handleToAddUser, adminAdd}) => {
@@ -79,7 +77,7 @@ const Box:FC<BoxProps> = ({children, handleToAddUser, adminAdd}) => {
                     </div>
             </div>      
         </div>
-        <div className="overflow-x-auto mt-5">
+        <div className="overflow-x-auto mt-5 mb-20">
             <table className="table table-compact w-5/6 mx-auto mt-10">
                 <thead>
                     <tr>
@@ -91,19 +89,12 @@ const Box:FC<BoxProps> = ({children, handleToAddUser, adminAdd}) => {
                         <th>Status</th> 
                         <th>Action</th>
                     </tr>
-                </thead> 
+                </thead>
                 <tbody>
                     {children}
-                </tbody> 
+                </tbody>
             </table>
         </div>
-        <div className="flex justify-end">
-            <div className="btn-group my-10 mr-20">
-                <button className="btn btn-sm bg-white text-gray-800 hover:text-white">Prev</button>
-                <button className="btn btn-sm">2</button>
-                <button className="btn btn-sm bg-white text-gray-800 hover:text-white">Next</button>
-            </div>
-        </div> 
     </div>
     )
 }
