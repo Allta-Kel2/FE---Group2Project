@@ -1,16 +1,37 @@
 import { InputHTMLAttributes } from "react";
 
-interface Props extends InputHTMLAttributes<HTMLInputElement>{
-    id: string;
+interface InputProps {
+    label: string;
+    name: string;
+    type?: string;
+    value: string;
+    placeholder:string
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const Input = ({ id, ...props}: Props) =>{
+const Input: React.FC<InputProps> = ({ 
+    label, 
+    name,
+    type,
+    value,
+    onChange,
+    placeholder
+}) =>{
     return(
-        <input 
-            id={id}
-            className="bg-slate-200 rounded-lg text-orange-500 p-2 border focus:outline-none focus:border-orange-500 focus:ring-orange-500"
-            {...props}
-        />
+        <div className="mb-1">
+            <label className="block text-gray-700 font-bold mb-2" htmlFor={name}>
+                {label}
+            </label>
+            <input
+                className="input input-sm input-bordered w-full max-w-xs"
+                id={name}
+                type={type}
+                name={name}
+                value={value}
+                onChange={onChange}
+                placeholder={placeholder}
+            />
+    </div>
     )
 }
 

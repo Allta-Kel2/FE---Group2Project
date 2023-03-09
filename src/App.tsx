@@ -2,15 +2,19 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CookiesProvider, useCookies } from "react-cookie";
+
 //import axios from "axios";
+
 
 import Login from './page/auth/Login';
 import Dashboard from './page/dashboard';
 import UserList from './page/user';
 import Mentee from './page/mentee';
 import ClassPage from './page/class';
+
 import AddNewMentee from './page/mentee/AddNewMentee';
 import DetailMentee from './page/mentee/DetailMentee';
+
 
 //axios.defaults.baseURL = "https://app1.mindd.site/";
 
@@ -25,21 +29,23 @@ function App() {
   //   return config;
   // });
     
-  // axios.interceptors.response.use(
-  //   function (response) {
-  //     return response;
-  //   },
-  //   function (error) {
-  //     const { data } = error.response;
-  //     if (
-  //       data === "Missing or malformed JWT" ||
-  //       [401, 403].includes(data.code)
-  //     ) {
-  //       removeCookie("token", {path: '/'});
-  //     }
-  //     return Promise.reject(error);
-  //   }
-  //);
+
+  axios.interceptors.response.use(
+    function (response) {
+      return response;
+    },
+    function (error) {
+      const { data } = error.response;
+      if (
+        data === "Missing or malformed JWT" ||
+        [401, 403].includes(data.code)
+      ) {
+        removeCookie("token", {path:"/"});
+      }
+      return Promise.reject(error);
+    }
+  );
+
 
   return (
     <CookiesProvider>
@@ -52,6 +58,7 @@ function App() {
           <Route path="/mentee/detailmentee" element={<DetailMentee />} />
           <Route path="/mentee/addnewmentee" element={<AddNewMentee />} />
           <Route path="/class" element={<ClassPage />} />
+          <Route path="/editUser/:full_name" element={<EditUser />}/>
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
