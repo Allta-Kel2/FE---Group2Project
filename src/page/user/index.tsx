@@ -93,22 +93,11 @@ const UserList = () => {
             />
             <Box
             handleToAddUser={()=>setShowModal(true)}>
-                {data && loading === true ? (
-                    data.map((item:any) => {
-                        return(
-                            <UserTable
-                            key={item.id}
-                            name={item.full_name}
-                            email={item.email}
-                            team={item.team.name}
-                            role={item.role}
-                            status={item.status}
+                            <Table 
+                            data={data}
+                            columns={data}
                             />
-                        )
-                    })
-                ):(
-                    <h1 className="flex justify-center">Please wait ...</h1>
-                )}
+                
             </Box>
             <Modal 
             title="Add New User"

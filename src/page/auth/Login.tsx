@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import withReactContent from "sweetalert2-react-content";
 import { Link, useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import { useCookies, Cookies } from "react-cookie";
 import axios from "axios";
 
 import Button from "../../components/Button";
@@ -11,7 +11,7 @@ import Chill from "../../assets/Chill.webp";
 import Swal from "../../utils/Swal";
 
 const Login = () => {
-    const [, setCookie] = useCookies(["token", "id"]);
+    const [cookies, setCookie] = useCookies(["token", "id", "role"]);
     const MySwal = withReactContent(Swal);
     const navigate = useNavigate();
     const [disabled, setDisabled] = useState<boolean>(true);
@@ -27,6 +27,8 @@ const Login = () => {
         }
     }, [email,password]);
 
+    const token:string = ''
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
         setLoading(true);
         e.preventDefault();
@@ -35,7 +37,16 @@ const Login = () => {
             password,
         };
         await axios
-            .post("login", body)
+            .post("https://app1.mindd.site/auth/login",{
+                email: body.email,
+                password: body.password
+            },
+            {
+                headers: {
+                    Accept: 'application/json',
+                    "Content-Type" : 'application/json'
+                }
+            } )
             .then((res) =>{
                 const { message } = res.data;
                 setCookie("token", res.data.data.token, { path: "/" });
@@ -45,7 +56,7 @@ const Login = () => {
                     text: "Login Success!",
                     showCancelButton: false,
                 });
-                navigate("/");
+                navigate("/dashboard");
             })
             .catch((err) =>{
                 const { data } = err.response;
@@ -56,8 +67,25 @@ const Login = () => {
                 });
             })
             .finally(() => setLoading(false));
+        await axios.get("https://app1.mindd.site/auth/users",{
+            headers: {
+                Accept: 'application/json',
+                "Content-Type" : 'application/json',
+                Authorization: `Bearer ${cookies.token}`    
+            }
+        }
+        )
+        .then((response)=> {
+            console.log(response.data)
+            setCookie("role", response.data.data.role, {path: '/'})
+            setCookie("id", response.data.data.id, {path: '/'})
+            navigate('/dashboard')
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     };
-
+    console.log(email)
     return(
         <Layout>
             <div className="w-full h-screen flex flex-col overflow-auto  bg-white">
@@ -89,31 +117,36 @@ const Login = () => {
                                         Please Enter your detail
                                     </p>
                                     <label className="label">
-                                        <span className="label-text mt-14">Username</span>
+                                        <span className="label-text mt-14">Email</span>
                                     </label>
                                     <input
-                                        type="text"
+                                        type="email"
                                         placeholder="Enter your username"
                                         className="input input-bordered input-primary w-full bg-white"
                                         style={{ border: "4px soluid #F47522" }}
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                     />
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
                                     <input
                                         type="password"
-                                        placeholder="******"
+                                        placeholder="type your Password"
                                         className="input input-bordered input-primary w-full bg-white"
                                         style={{ border: "4px soluid #F47522" }}
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
                                     />
                                     <button
                                         className="btn w-full"
                                         style={{
-                                        marginTop: "1rem",
-                                        backgroundColor: "#F47522",
-                                        border: "none",
-                                        color: "white",
+                                            marginTop: "1rem",
+                                            backgroundColor: "#F47522",
+                                            border: "none",
+                                            color: "white",
                                         }}
+                                        onClick={handleSubmit}
                                     >
                                         Login
                                     </button>

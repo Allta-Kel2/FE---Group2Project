@@ -16,16 +16,16 @@ function Table<T>({ data, columns }: TableProps<T>) {
         <table>
         <thead>
             <tr>
-            {columns.map((column) => (
+            {columns.map((column:any) => (
                 <th key={column.key}>{column.header}</th>
             ))}
             </tr>
         </thead>
         <tbody>
-            {data.map((item) => (
+            {data.map((item:any) => (
             <tr key={item.id}>
-                {columns.map((column) => (
-                <td key={${item.id}-${column.key}}>{column.render(item)}</td>
+                {columns.map((column:any) => (
+                        <td key={`${item.id}-${column.key}`}>{column.render(item)}</td>   
                 ))}
             </tr>
             ))}
