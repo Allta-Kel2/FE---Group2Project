@@ -5,9 +5,11 @@ import UserList from './UserList'
 interface BoxProps{
     children?: React.ReactNode
     handleToAddUser?: React.MouseEventHandler
+    adminAdd: string
 }
 
-const Box:FC<BoxProps> = ({children, handleToAddUser}) => {
+const Box:FC<BoxProps> = ({children, handleToAddUser, adminAdd}) => {
+    const admin:string = "admin"
     return (
     <div className="box-border h-5/6 w-full border-2 bg-white border-2 rounded-lg shadow-lg my-36 mx-36">
         <div className='flex flex-col border-b-2'>
@@ -69,6 +71,7 @@ const Box:FC<BoxProps> = ({children, handleToAddUser}) => {
                             </div>
                             <div className="row-span-2">
                                 <button className="btn btn w-28 text-xs bg-sky-900 border-none hover:bg-orange-500 mt-5"
+                                disabled={admin !== adminAdd } 
                                 onClick={handleToAddUser}
                                 >Add New</button>
                             </div>

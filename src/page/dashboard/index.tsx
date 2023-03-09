@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 import Layout from "../../components/Layout";
 import SideBar from "../../components/SideBar";
@@ -7,7 +8,14 @@ import SideBar from "../../components/SideBar";
 const Dashboard = () => {
 
   const navigate = useNavigate()
+  const [cookies, setCookie, removeCookie] = useCookies();
 
+  function handleRemoveCookie(){
+    removeCookie("role", {path: '/'})
+    removeCookie("id", {path: '/'})
+    removeCookie("token", {path: '/'})
+    navigate('/')
+}
   return (
         <Layout> 
             <SideBar 
@@ -18,6 +26,7 @@ const Dashboard = () => {
             handleToMentee={()=> navigate('/mentee')}
             handleToUser={()=> navigate('/user')}
             handleToClass={() => navigate('/class')}
+            handleLogout={() =>handleRemoveCookie()}
             />
         </Layout>
   )
