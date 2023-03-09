@@ -2,6 +2,7 @@ import React,{ useState, useContext, useEffect } from 'react'
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
+import jwt_decode from "jwt-decode";
 
 import Layout from "../../components/Layout";
 import SideBar from "../../components/SideBar";
@@ -21,15 +22,16 @@ const UserList = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [responseSideBar, setResponseSideBar] = useState(false)
-
+    const [cookies, setCookie, removeCookie] = useCookies();
+    const decoded:any = jwt_decode(cookies.token)
     
-    async function handleGetUser(){
+        async function handleGetUser(){
             axios.get(
             `https://app1.mindd.site/users` ,{
                 headers: {
                     Accept : 'application/json',
                     'Content-Type': 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjc4NTQ2NDQ1fQ.Z9PqmauuYOTWYLc0WZC3O1ZNDnTeu-V4eGFioecXeeY'
+                    Authorization: `Bearer ${cookies.token}`
                 }
             })
             .then((response) => {
@@ -41,7 +43,30 @@ const UserList = () => {
                 console.log(error)
             })
         }
-    
+        // async function handleGetRole(){
+        //     await axios.get("https://app1.mindd.site/auth/users",{
+        //         headers: {
+        //             Accept: 'application/json',
+        //             "Content-Type" : 'application/json',
+        //             Authorization: `Bearer ${token}`    
+        //         }
+        //     }
+        //     )
+        //     .then((response)=> {
+        //         console.log(response.data)
+        //         setCookie("role", response.data.data.role, {path: '/'})
+        //         setCookie("id", response.data.data.id, {path: '/'})
+        //     })
+        //     .catch((error) => {
+        //         console.log(error)
+        //     })
+        // }
+        function handleRemoveCookie(){
+            removeCookie("role", {path: '/'})
+            removeCookie("id", {path: '/'})
+            removeCookie("token", {path: '/'})
+            navigate('/')
+        }
         // async function addNewUser(){
         //     await axios.post(
         //         'https://app1.mindd.site/users',
@@ -73,7 +98,7 @@ const UserList = () => {
         handleGetUser()
         // addNewUser()
     },[])
-    console.log(responseSideBar)
+    console.log(decoded)
     return (
         <Layout> 
         <SideBar 
@@ -85,18 +110,21 @@ const UserList = () => {
         handleToUser={()=> navigate('/user')}
         handleToClass={() => navigate('/class')}
         responsive={responseSideBar}
+        handleLogout={()=> handleRemoveCookie()}
         />
         <div className="flex flex-col w-full mx-80">
             <Navbar
             isOn={()=>setResponseSideBar(false)}
             isOf={()=>setResponseSideBar(true)}
+            name={decoded.role}
             />
             <Box
+            adminAdd={decoded.role}
             handleToAddUser={()=>setShowModal(true)}>
-                            <Table 
+                            {/* <Table 
                             data={data}
                             columns={data}
-                            />
+                            /> */}
                 
             </Box>
             <Modal 

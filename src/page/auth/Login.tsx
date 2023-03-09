@@ -3,6 +3,7 @@ import withReactContent from "sweetalert2-react-content";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies, Cookies } from "react-cookie";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 import Button from "../../components/Button";
 import Input from "../../components/Input";
@@ -27,7 +28,6 @@ const Login = () => {
         }
     }, [email,password]);
 
-    const token:string = ''
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
         setLoading(true);
@@ -67,23 +67,6 @@ const Login = () => {
                 });
             })
             .finally(() => setLoading(false));
-        await axios.get("https://app1.mindd.site/auth/users",{
-            headers: {
-                Accept: 'application/json',
-                "Content-Type" : 'application/json',
-                Authorization: `Bearer ${cookies.token}`    
-            }
-        }
-        )
-        .then((response)=> {
-            console.log(response.data)
-            setCookie("role", response.data.data.role, {path: '/'})
-            setCookie("id", response.data.data.id, {path: '/'})
-            navigate('/dashboard')
-        })
-        .catch((error) => {
-            console.log(error)
-        })
     };
     console.log(email)
     return(

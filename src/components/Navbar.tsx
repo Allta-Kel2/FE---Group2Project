@@ -6,11 +6,13 @@ import back from "../assets/back.png";
 interface NavbarProps{
     isOn?: React.MouseEventHandler
     isOf?: React.MouseEventHandler
+    name?: string
 }
 
 const Navbar: React.FC<NavbarProps> = ({
     isOn,
-    isOf
+    isOf,
+    name
 }) => {
     return(
         <nav
@@ -28,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({
             <div className="flex-1">
                 <section className='navbar-end justify-end font-semibold text-sky-900'>
                     <div>
-                        Hii Admin!
+                        Hii {name}!!!
                     </div>  
                 </section>
             </div>
