@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+
 interface UserProps{
     name?: string
     email?: string

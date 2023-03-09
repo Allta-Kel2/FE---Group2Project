@@ -2,16 +2,21 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CookiesProvider, useCookies } from "react-cookie";
-import axios from "axios";
+
+//import axios from "axios";
+
 
 import Login from './page/auth/Login';
 import Dashboard from './page/dashboard';
 import UserList from './page/user';
 import Mentee from './page/mentee';
 import ClassPage from './page/class';
-import EditUser from './page/editUser';
 
-axios.defaults.baseURL = "https://app1.mindd.site/";
+import AddNewMentee from './page/mentee/AddNewMentee';
+import DetailMentee from './page/mentee/DetailMentee';
+
+
+//axios.defaults.baseURL = "https://app1.mindd.site/";
 
 function App() {
   const [cookie, removeCookie] = useCookies(["token"]);
@@ -24,6 +29,7 @@ function App() {
   //   return config;
   // });
     
+
   axios.interceptors.response.use(
     function (response) {
       return response;
@@ -40,6 +46,7 @@ function App() {
     }
   );
 
+
   return (
     <CookiesProvider>
       <BrowserRouter>
@@ -48,6 +55,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/user" element={<UserList />} />
           <Route path="/mentee" element={<Mentee />} />
+          <Route path="/mentee/detailmentee" element={<DetailMentee />} />
+          <Route path="/mentee/addnewmentee" element={<AddNewMentee />} />
           <Route path="/class" element={<ClassPage />} />
           <Route path="/editUser/:full_name" element={<EditUser />}/>
         </Routes>
