@@ -11,7 +11,7 @@ interface BoxProps{
 const Box:FC<BoxProps> = ({children, handleToAddUser, adminAdd}) => {
     const admin:string = "admin"
     return (
-    <div className="box-border h-5/6 w-full border-2 bg-white border-2 rounded-lg shadow-lg my-36 mx-36">
+        <div className="box-border h-5/6 w-full border-2 bg-white border-2 rounded-lg shadow-lg my-36 mx-36">
         <div className='flex flex-col border-b-2'>
             <p className='ml-10 my-5 font-bold text-sky-900 text-4xl'> List User </p>
             <div className='box w-5/6 h-34 mx-auto mb-3'>
@@ -73,7 +73,7 @@ const Box:FC<BoxProps> = ({children, handleToAddUser, adminAdd}) => {
                                 <button className="btn btn w-28 text-xs bg-sky-900 border-none hover:bg-orange-500 mt-5"
                                 disabled={admin !== adminAdd } 
                                 onClick={handleToAddUser}
-                                >Add New</button>
+                            >Add New</button>
                             </div>
                         </div>
                     </div>
