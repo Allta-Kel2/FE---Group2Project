@@ -1,12 +1,63 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import withReactContent from "sweetalert2-react-content";
+import { Link, useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Layout from "../../components/Layout";
 import Chill from "../../assets/Chill.webp";
+import Swal from "../../utils/Swal";
 
 const Login = () => {
+    const [, setCookie] = useCookies(["token", "id"]);
+    const MySwal = withReactContent(Swal);
+    const navigate = useNavigate();
+    const [disabled, setDisabled] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [password, setPassword] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+
+    useEffect(() =>{
+        if(email && password) {
+            setDisabled(false);
+        }else{
+            setDisabled(true);
+        }
+    }, [email,password]);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
+        setLoading(true);
+        e.preventDefault();
+        const body = {
+            email,
+            password,
+        };
+        await axios
+            .post("login", body)
+            .then((res) =>{
+                const { message } = res.data;
+                setCookie("token", res.data.data.token, { path: "/" });
+                setCookie("id", res.data.data.id, { path: "/" });
+                MySwal.fire({
+                    title: "Hello!",
+                    text: "Login Success!",
+                    showCancelButton: false,
+                });
+                navigate("/");
+            })
+            .catch((err) =>{
+                const { data } = err.response;
+                MySwal.fire({
+                    title: "Failed",
+                    text: "Wrong Username or Password",
+                    showCancelButton: false,
+                });
+            })
+            .finally(() => setLoading(false));
+    };
+
     return(
         <Layout>
             <div className="w-full h-screen flex flex-col overflow-auto  bg-white">
@@ -107,6 +158,6 @@ const Login = () => {
             </div>
         </Layout>
     )
-}
+};
 
 export default Login;
