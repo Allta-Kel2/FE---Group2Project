@@ -3,11 +3,9 @@ import React, { FC } from "react";
 interface MenteeProps{
     children?: React.ReactNode
     handleToAddMentee?: React.MouseEventHandler
-    menteeAdd: string
 }
 
-const BoxMentee:FC<MenteeProps> = ({ children, handleToAddMentee, menteeAdd }) =>{
-    const mentee: string = "mentee"
+const BoxMentee:FC<MenteeProps> = ({ children, handleToAddMentee }) =>{
 
     return(
         <div className="box-border h-5/6 w-full border-2 bg-white border-2 rounded-lg shadow-lg my-36 mx-36">
@@ -63,7 +61,6 @@ const BoxMentee:FC<MenteeProps> = ({ children, handleToAddMentee, menteeAdd }) =
                             </div>
                             <div className="row-span-2">
                                 <button className="btn btn w-28 text-xs bg-sky-900 border-none hover:bg-orange-500 mt-5"
-                                    disabled={mentee !== menteeAdd } 
                                     onClick={handleToAddMentee} 
                                 >Add Mentee</button>
                             </div>
