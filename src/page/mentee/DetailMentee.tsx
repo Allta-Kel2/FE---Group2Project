@@ -12,6 +12,7 @@ interface TypeMentee{
     id: number;
 }
 
+
 const DetailMentee = () =>{
     const navigate = useNavigate();
     const { id } = useParams();
