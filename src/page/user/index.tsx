@@ -2,7 +2,6 @@ import React,{ useState, useContext, useEffect } from 'react'
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 import withReactContent from "sweetalert2-react-content";
 import Swal from "../../utils/Swal";
 
@@ -49,7 +48,6 @@ const UserList = () => {
     const [loading, setLoading] = useState(false)
     const [responseSideBar, setResponseSideBar] = useState(false)
         const [cookies, setCookie, removeCookie] = useCookies();
-        const decoded:any = jwt_decode(cookies.token)
     const MySwal = withReactContent(Swal);
     const [full_name, setFullName] = useState("")
     const [email, setEmail] = useState("")
