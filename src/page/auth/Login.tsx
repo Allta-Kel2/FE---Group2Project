@@ -3,7 +3,6 @@ import withReactContent from "sweetalert2-react-content";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies, Cookies } from "react-cookie";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 
 import Button from "../../components/Button";
 import Input from "../../components/Input";
