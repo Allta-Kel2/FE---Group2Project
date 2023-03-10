@@ -20,7 +20,6 @@ const EditClass: React.FC<EditProps> = ({item}) => {
     const location = useLocation()
     const [loading, setLoading] = useState(false)
     const [cookies, setCookie, removeCookie] = useCookies();
-    const decoded:any = jwt_decode(cookies.token)
     const [detailClass, setDetailClass] = useState({item})
     const [name, setName] = useState("")
     const [mentor, setMentor]= useState(0)
