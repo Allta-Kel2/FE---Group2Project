@@ -6,7 +6,6 @@ import withReactContent from "sweetalert2-react-content";
 import Swal from "../../utils/Swal";
 import Input from '../../components/Input'
 import Layout from '../../components/Layout'
-import jwt_decode from "jwt-decode";
 
 interface EditProps {
     item?: any
