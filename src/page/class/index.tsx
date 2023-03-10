@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import withReactContent from "sweetalert2-react-content";
 import Swal from "../../utils/Swal";
-import jwt_decode from "jwt-decode";
 
 import Layout from "../../components/Layout";
 import SideBar from "../../components/SideBar";
