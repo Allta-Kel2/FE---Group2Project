@@ -110,11 +110,12 @@ const UserList = () => {
                     title: "Delete User!",
                     text: "Delete User Success!",
                     showCancelButton: false,
-                });
+                })
+            })
             .catch((error) => {
                 console.log(error)
             })
-            })
+        } 
         
 
         async function handleGetTeam(){
@@ -168,8 +169,7 @@ const UserList = () => {
                     title: "Add New User!",
                     text: "Add New User Success!",
                     showCancelButton: false,
-                });
-                window.location.reload(true)
+                })
             })
             .catch((error) => {
                 console.log(error)
