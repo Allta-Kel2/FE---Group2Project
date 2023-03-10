@@ -115,9 +115,7 @@ const UserList = () => {
                 console.log(error)
             })
             }
-        const handleEditUser = async () =>{
-
-        }
+        
 
         async function handleGetTeam(){
             await axios.get("https://app1.mindd.site/teams",{
@@ -210,6 +208,11 @@ const UserList = () => {
             isOn={()=>setResponseSideBar(false)}
             isOf={()=>setResponseSideBar(true)}
             name={decoded.role}
+            handleEdit={()=> navigate(`/editUser/${decoded.role}`,{
+                state: {
+                id: decoded.id
+                    }    
+                })}
             />
             <Box
             adminAdd={decoded.role}
@@ -219,11 +222,13 @@ const UserList = () => {
                     return(
                         <UserTable
                         key={item.id}
+                        no={item.id}
                         name={item.full_name}
                         team={item.team.name}
                         role={item.role}
                         email={item.email}
                         status={item.status}
+                        adminAdd={decoded.role}
                         handleDelete={()=> handleDeleteUser(item.id)}
                         handleEdit={()=> navigate(`/editUser/${item.full_name}`,{
                             state: {

@@ -14,7 +14,8 @@ import ClassPage from './page/class';
 
 import AddNewMentee from './page/mentee/AddNewMentee';
 import DetailMentee from './page/mentee/DetailMentee';
-
+import EditUser from './page/editUser';
+import EditClass from './page/editClass';
 
 //axios.defaults.baseURL = "https://app1.mindd.site/";
 
@@ -30,21 +31,21 @@ function App() {
   // });
     
 
-  axios.interceptors.response.use(
-    function (response) {
-      return response;
-    },
-    function (error) {
-      const { data } = error.response;
-      if (
-        data === "Missing or malformed JWT" ||
-        [401, 403].includes(data.code)
-      ) {
-        removeCookie("token", {path:"/"});
-      }
-      return Promise.reject(error);
-    }
-  );
+  // axios.interceptors.response.use(
+  //   function (response) {
+  //     return response;
+  //   },
+  //   function (error) {
+  //     const { data } = error.response;
+  //     if (
+  //       data === "Missing or malformed JWT" ||
+  //       [401, 403].includes(data.code)
+  //     ) {
+  //       removeCookie("token", {path:"/"});
+  //     }
+  //     return Promise.reject(error);
+  //   }
+  // );
 
 
   return (
@@ -59,6 +60,7 @@ function App() {
           <Route path="/mentee/addnewmentee" element={<AddNewMentee />} />
           <Route path="/class" element={<ClassPage />} />
           <Route path="/editUser/:full_name" element={<EditUser />}/>
+          <Route path="/editClass/:Class_name" element={<EditClass />}/>
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

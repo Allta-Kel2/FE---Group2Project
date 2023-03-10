@@ -31,8 +31,9 @@ const ClassPage = () => {
     const [valueOptions, setValueOptions] = useState([])
     const [option, setOptions]= useState('')
     const MySwal = withReactContent(Swal);
-
-
+    const id_team = 2
+    
+    
     async function handleGetClass(){
         axios.get(
         `https://app1.mindd.site/classes`
@@ -113,15 +114,33 @@ const ClassPage = () => {
         })
     }
 
-    function handleDeleteClass(){
-
+    async function handleDeleteClass(id:any){
+        await axios.delete(`https://app1.mindd.site/classes/${id}`,
+        {
+            headers: {
+                Accept : 'application/json',
+                'Content-Type': 'application/json',
+                Authorization : `Bearer ${cookies.token}`
+            }
+        })
+        .then((response) => {
+            setData(response.data.data.filter((item:any) => item.id !== id ))
+            MySwal.fire({
+                title: "Delete User!",
+                text: "Delete User Success!",
+                showCancelButton: false,
+            });
+            window.location.reload(true)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     }
 
     function handleEditClass(){
 
     }
 
-    const id_team = 2
 
 useEffect(()=>{
     handleGetClass()
@@ -149,12 +168,17 @@ useEffect(()=>{
                         return(
                             <ClassTable
                             key={item.id}
+                            no={item.id}
                             name={item.class_name}
-                            mentorId={item.pic_user_id}
+                            mentor={item.user.full_name}
                             dateGraduete={item.date_graduate}
                             dateStart={item.date_start}
-                            handleDelete={()=> handleDeleteClass()}
-                            handleEdit={()=> handleEditClass()}
+                            handleDelete={()=> handleDeleteClass(item.id)}
+                            handleEdit={()=>  navigate(`/editClass/${item.class_name}`,{
+                                state: {
+                                id: item.id
+                                    }    
+                                })}
                             />
                         )
                     })
