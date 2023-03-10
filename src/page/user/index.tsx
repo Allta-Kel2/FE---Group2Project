@@ -16,6 +16,7 @@ import FilterUser from '../../components/FilterUser';
 import Navbar from '../../components/Navbar';
 import UserTable from '../../components/UserTable';
 import Input from '../../components/Input';
+import Button from "../../components/Button";
 import Table from '../../components/Table';
 
 
@@ -44,6 +45,7 @@ const UserList = () => {
         //     phone_number: '',
         //     role:'' 
         // })
+    
     const [loading, setLoading] = useState(false)
     const [responseSideBar, setResponseSideBar] = useState(false)
         const [cookies, setCookie, removeCookie] = useCookies();
@@ -109,12 +111,10 @@ const UserList = () => {
                     text: "Delete User Success!",
                     showCancelButton: false,
                 });
-                window.location.reload(true)
-            })
             .catch((error) => {
                 console.log(error)
             })
-            }
+            })
         
 
         async function handleGetTeam(){
@@ -300,8 +300,12 @@ const UserList = () => {
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)}
                                 />
-                                <button onClick={handleAddNewUser} className="btn btn w-28 text-xs bg-sky-900 border-none hover:bg-orange-500 mt-5">Submit</button>
-                        </div>
+                                <Button
+                                color='w-28 text-xs bg-sky-900 border-none hover:bg-orange-500 mt-5'
+                                onClick={handleAddNewUser}
+                                label="Submit"
+                                />
+                          </div>
                     </form>
             </Modal>
 

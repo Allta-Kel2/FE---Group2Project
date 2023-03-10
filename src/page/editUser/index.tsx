@@ -129,7 +129,7 @@ useEffect(()=> {
             console.log(response.data)
             MySwal.fire({
                 title: "Edit User!",
-                text: `Edit Data ${detailUser.full_name} Success!`,
+                text: `Edit Data User Success!`,
                 showCancelButton: false,
             });
             navigate('/user')
@@ -152,7 +152,7 @@ useEffect(()=> {
                                 <Input
                                 label='Name'
                                 name='name-input'
-                                placeholder={`${detailUser.full_name}`}
+                                placeholder={`Set New name`}
                                 type='text'
                                 value={full_name}
                                 onChange={(e) => setFullName(e.target.value)}
@@ -160,7 +160,7 @@ useEffect(()=> {
                                 <Input
                                 label='Email'
                                 name='email-input'
-                                placeholder={`${detailUser.email}`}
+                                placeholder={`$et New Email`}
                                 type='email'
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -168,7 +168,7 @@ useEffect(()=> {
                                 <Input
                                 label='Phone Number'
                                 name='phone-input'
-                                placeholder={`${detailUser.phone_number}`}
+                                placeholder={`Set New Password`}
                                 type='text'
                                 value={phone_number}
                                 onChange={(e) => setPhoneNumber(e.target.value)}
@@ -176,7 +176,7 @@ useEffect(()=> {
                                 <label className="label">
                                     <span className="block text-gray-700 font-bold mb-2">Status</span>
                                 </label>
-                                <select onChange={(e) => setOptionsStatus(e.target.value)} placeholder={`${detailUser.full_name}`} className="select select-bordered select-sm  ">
+                                <select onChange={(e) => setOptionsStatus(e.target.value)} placeholder={'aaa'} className="select select-bordered select-sm  ">
                                 {valueStatus.map((item:any) => 
                                         <option key={item.status} value={item.status}>{item.name}</option>
                                         )}
@@ -186,7 +186,7 @@ useEffect(()=> {
                                 <label className="label">
                                     <span className="block text-gray-700 font-bold mb-2">Team</span>
                                 </label>
-                                <select onChange={(e) => setOptions(e.target.value)} placeholder={`${detailUser.full_name}`} className="select select-bordered select-sm  ">
+                                <select onChange={(e) => setOptions(e.target.value)} placeholder={`aaa`} className="select select-bordered select-sm  ">
                                     {valueOptions.map((item:any) => 
                                         <option key={item.id} value={item.id}>{item.name}</option>
                                         
@@ -195,7 +195,7 @@ useEffect(()=> {
                                 <Input
                                 label='Address'
                                 name='address-input'
-                                placeholder={`${detailUser.address}`}
+                                placeholder={`Address`}
                                 type='text'
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)}

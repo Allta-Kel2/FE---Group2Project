@@ -90,7 +90,7 @@ const EditClass: React.FC<EditProps> = ({item}) => {
             console.log(response.data)
             MySwal.fire({
                 title: "Edit User!",
-                text: `Edit Data ${detailClass.class_name} Success!`,
+                text: `Edit Data Class Success!`,
                 showCancelButton: false,
             });
             navigate('/class')
