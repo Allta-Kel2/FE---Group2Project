@@ -11,9 +11,9 @@ import Dashboard from './page/dashboard';
 import UserList from './page/user';
 import Mentee from './page/mentee';
 import ClassPage from './page/class';
-
 import AddNewMentee from './page/mentee/AddNewMentee';
 import DetailMentee from './page/mentee/DetailMentee';
+import EditUser from './page/editUser';
 
 
 //axios.defaults.baseURL = "https://app1.mindd.site/";
@@ -30,21 +30,21 @@ function App() {
   // });
     
 
-  axios.interceptors.response.use(
-    function (response) {
-      return response;
-    },
-    function (error) {
-      const { data } = error.response;
-      if (
-        data === "Missing or malformed JWT" ||
-        [401, 403].includes(data.code)
-      ) {
-        removeCookie("token", {path:"/"});
-      }
-      return Promise.reject(error);
-    }
-  );
+  // axios.interceptors.response.use(
+  //   function (response) {
+  //     return response;
+  //   },
+  //   function (error) {
+  //     const { data } = error.response;
+  //     if (
+  //       data === "Missing or malformed JWT" ||
+  //       [401, 403].includes(data.code)
+  //     ) {
+  //       removeCookie("token", {path:"/"});
+  //     }
+  //     return Promise.reject(error);
+  //   }
+  // );
 
 
   return (

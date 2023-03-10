@@ -1,0 +1,26 @@
+[
+    {
+      "name": "Sela",
+      "bulan": "Maret",
+      "total": "13",
+      "status": "graduate"
+    },
+    {
+        "name": "Lili",
+        "bulan": "Mei",
+        "total": "1",
+        "status": "placement"
+    },
+    {
+        "name": "Desya",
+        "bulan": "Januari",
+        "total": "0",
+        "status": "Register"
+    },
+    {
+        "name": "Anindita",
+        "bulan": "April",
+        "total": "4",
+        "status": "Register"
+    }
+]
