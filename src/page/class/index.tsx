@@ -8,6 +8,7 @@ import jwt_decode from "jwt-decode";
 
 import Layout from "../../components/Layout";
 import SideBar from "../../components/SideBar";
+import Button from "../../components/Button";
 import Modal from '../../components/Modal';
 import FilterClass from '../../components/FilterClass';
 import AddClass from '../../components/AddClass';
@@ -20,6 +21,7 @@ const ClassPage = () => {
     
     const navigate = useNavigate()
     const [showModal, setShowModal] = useState(false)
+    const [reload, setReload] = useState<any>(false)
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [cookies, setCookie, removeCookie] = useCookies();
@@ -102,7 +104,7 @@ const ClassPage = () => {
                 text: "Add New Class Success!",
                 showCancelButton: false,
             });
-            window.location.reload(true)
+            setReload(true)
         })
         .catch((error) => {
             console.log(error)
@@ -130,7 +132,6 @@ const ClassPage = () => {
                 text: "Delete User Success!",
                 showCancelButton: false,
             });
-            window.location.reload(true)
         })
         .catch((error) => {
             console.log(error)
@@ -227,7 +228,11 @@ useEffect(()=>{
                                         <option key={item.id} value={item.id}>{id_team === item.team_id ? (item.full_name) : (console.log("error"))}</option>
                                     )}
                                 </select>
-                                <button onClick={handleAddNewClass} className="btn btn w-28 text-xs bg-sky-900 border-none hover:bg-orange-500 mt-5">Submit</button>
+                                <Button
+                                color='w-28 text-xs bg-sky-900 border-none hover:bg-orange-500 mt-5'
+                                onClick={handleAddNewClass}
+                                label="Submit"
+                                />
                         </div>
                     </form>
                 </Modal>

@@ -121,18 +121,12 @@ const Login = () => {
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
-                                    <button
-                                        className="btn w-full"
-                                        style={{
-                                            marginTop: "1rem",
-                                            backgroundColor: "#F47522",
-                                            border: "none",
-                                            color: "white",
-                                        }}
+                                    
+                                        <Button
+                                        color="bg-orange-500 w-full mt-5"
+                                        label='Login'
                                         onClick={handleSubmit}
-                                    >
-                                        Login
-                                    </button>
+                                        />
                                 </form>
                             </div>
                         </div>
