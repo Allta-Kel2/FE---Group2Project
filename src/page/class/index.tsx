@@ -24,7 +24,6 @@ const ClassPage = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [cookies, setCookie, removeCookie] = useCookies();
-    const decoded:any = jwt_decode(cookies.token)
     const [name, setName] = useState("")
     const [mentor, setMentor]= useState(0)
     const [date_start, setDateStart] = useState("")
