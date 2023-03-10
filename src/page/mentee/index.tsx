@@ -26,9 +26,7 @@ const Mentee = () => {
             />
         <div className='flex flex-col w-full mx-80'>
             <Navbar />
-            <BoxMentee>
-                <MenteeTable></MenteeTable>
-            </BoxMentee>
+            
         </div>
         </Layout>
     )
