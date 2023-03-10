@@ -43,7 +43,7 @@ const BoxClass: React.FC<BoxProps> = ({children, handleToAddClass}) => {
             <table className="table table-compact w-5/6 mx-auto mt-10">
                 <thead>
                     <tr>
-                        <th>No</th> 
+                        <th>ID</th> 
                         <th>Name</th> 
                         <th>Mentor Id</th> 
                         <th>Date Start</th> 

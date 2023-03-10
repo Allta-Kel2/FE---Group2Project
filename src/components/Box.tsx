@@ -23,42 +23,6 @@ const Box:FC<BoxProps> = ({children, handleToAddUser, adminAdd}) => {
                             </div>
                             <input type="text" placeholder="Search Name" className="input h-8 input-bordered rounded-none rounded-r-lg mt-2 input-orange w-44" />
                             </div>
-                            <div className='flex ml-2'>
-                                <div className='my-auto bg-gray-300 w-28 h-8 rounded-l-lg'> 
-                                    <p className='ml-2 mt-1 font-semibold'>
-                                    Role
-                                    </p>
-                                </div>
-                                <select className="select select-bordered rounded-none rounded-r-lg  select-sm w-44">
-                                    <option disabled selected>Role</option>
-                                    <option>Admin</option>
-                                    <option>Super Admin</option>
-                                </select>
-                            </div>
-                        <div className='flex'>
-                                    <div className='my-auto bg-gray-300 w-28 h-8 rounded-l-lg'> 
-                                        <p className='ml-2 mt-1  font-semibold'>
-                                        Team
-                                        </p>
-                                    </div>
-                                    <select className="select select-bordered rounded-none rounded-r-lg  select-sm w-44 ">
-                                        <option disabled selected>Team</option>
-                                        <option>Placement</option>
-                                        <option>Mentor</option>
-                                    </select>
-                                </div>
-                                <div className='flex ml-2'>
-                                    <div className='my-auto bg-gray-300 w-28 h-8 rounded-l-lg'> 
-                                        <p className='ml-2 mt-1 font-semibold'>
-                                        Status
-                                        </p>
-                                    </div>
-                                    <select className="select select-bordered rounded-none rounded-r-lg  select-sm w-44 ">
-                                        <option disabled selected>Status</option>
-                                        <option>Active</option>
-                                        <option>Non-Active</option>
-                                    </select>
-                                </div>
                         </div>
                         <div className='grid grid-rows-2 grid-flow-col gap-4 ml-8'>
                             <div className='col-span-1'>
@@ -69,9 +33,9 @@ const Box:FC<BoxProps> = ({children, handleToAddUser, adminAdd}) => {
                             </div>
                             <div className="row-span-2">
                                 <button className="btn btn w-28 text-xs bg-sky-900 border-none hover:bg-orange-500 mt-5"
-                                disabled={admin !== adminAdd } 
+                                disabled={admin !== adminAdd }
                                 onClick={handleToAddUser}
-                            >Add New</button>
+                                >Add New</button>
                             </div>
                         </div>
                     </div>
@@ -81,7 +45,7 @@ const Box:FC<BoxProps> = ({children, handleToAddUser, adminAdd}) => {
             <table className="table table-compact w-5/6 mx-auto mt-10">
                 <thead>
                     <tr>
-                        <th>No</th> 
+                        <th>ID</th> 
                         <th>Name</th> 
                         <th>Email</th> 
                         <th>Team</th> 

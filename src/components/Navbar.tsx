@@ -7,12 +7,14 @@ interface NavbarProps{
     isOn?: React.MouseEventHandler
     isOf?: React.MouseEventHandler
     name?: string
+    handleEdit?: React.MouseEventHandler
 }
 
 const Navbar: React.FC<NavbarProps> = ({
     isOn,
     isOf,
-    name
+    name,
+    handleEdit
 }) => {
     return(
         <nav
@@ -29,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div className="flex-1">
                 <section className='navbar-end justify-end font-semibold text-sky-900'>
-                    <div>
+                    <div onClick={handleEdit}>
                         Hii {name}!!!
                     </div>  
                 </section>
