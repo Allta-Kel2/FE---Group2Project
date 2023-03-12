@@ -21,7 +21,7 @@ const EditClass: React.FC<EditProps> = ({item}) => {
     const [loading, setLoading] = useState(false)
     const [cookies, setCookie, removeCookie] = useCookies();
     const [detailClass, setDetailClass] = useState({item})
-    const [name, setName] = useState("")
+    const [name, setName] = useState("") 
     const [mentor, setMentor]= useState(0)
     const [date_start, setDateStart] = useState("")
     const [date_graduate, setDateGraduate] = useState('')

@@ -55,6 +55,26 @@ const ClassPage = () => {
         })
     }
 
+    async function handleGetAuth(){
+        axios.get(
+        `https://app1.mindd.site/auth/users`
+        ,{
+            headers: {
+                Accept : 'application/json',
+                'Content-Type': 'application/json',
+                Authorization : `Bearer ${cookies.token}`
+            }
+        }
+        )
+        .then((response) => {
+            setCookie("role", response.data.data.role, { path: "/class" });
+            setCookie("id", response.data.data.id, { path: "/class" });
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+
     async function handleGetUser(){
         await axios.get("https://app1.mindd.site/users",{
             headers: {
@@ -102,7 +122,6 @@ const ClassPage = () => {
                 text: "Add New Class Success!",
                 showCancelButton: false,
             });
-            setReload(true)
         })
         .catch((error) => {
             console.log(error)
@@ -144,6 +163,7 @@ const ClassPage = () => {
 useEffect(()=>{
     handleGetClass()
     handleGetUser()
+    handleGetAuth()
 },[])
     return (
         <Layout> 
@@ -158,7 +178,7 @@ useEffect(()=>{
             />
         <div className="flex flex-col w-full mx-80">
             <Navbar
-            name={decoded.role}
+            name={cookies.role}
             />
                 <BoxClass
                 handleToAddClass={()=> setShowModal(true)}

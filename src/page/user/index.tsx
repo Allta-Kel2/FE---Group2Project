@@ -178,13 +178,33 @@ const UserList = () => {
                 });
             })
         }
+        async function handleGetAuth(){
+            axios.get(
+            `https://app1.mindd.site/auth/users`
+            ,{
+                headers: {
+                    Accept : 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization : `Bearer ${cookies.token}`
+                }
+            }
+            )
+            .then((response) => {
+                console.log(response.data.data)
+                setCookie("role", response.data.data.role, { path: "/" });
+                setCookie("id", response.data.data.id, { path: "/" });
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        }
 
 
 
     useEffect(()=>{
         handleGetUser()
         handleGetTeam()
-        // handleDeleteUser()
+        handleGetAuth()
     },[])
     // console.log(phone_number)
     // console.log(decoded)
@@ -205,15 +225,15 @@ const UserList = () => {
             <Navbar
             isOn={()=>setResponseSideBar(false)}
             isOf={()=>setResponseSideBar(true)}
-            name={decoded.role}
-            handleEdit={()=> navigate(`/editUser/${decoded.role}`,{
+            handleEdit={()=> navigate(`/editUser/${cookies.role}`,{
                 state: {
-                id: decoded.id
+                id: cookies.id
                     }    
                 })}
+            name={cookies.role}
             />
             <Box
-            adminAdd={decoded.role}
+            adminAdd={cookies.role}
             handleToAddUser={()=>setShowModal(true)}
             children={data && loading === true ? (
                 data?.map((item:any, index:number) => {
@@ -226,7 +246,7 @@ const UserList = () => {
                         role={item.role}
                         email={item.email}
                         status={item.status}
-                        adminAdd={decoded.role}
+                        adminAdd={cookies.role}
                         handleDelete={()=> handleDeleteUser(item.id)}
                         handleEdit={()=> navigate(`/editUser/${item.full_name}`,{
                             state: {
@@ -303,7 +323,7 @@ const UserList = () => {
                                 onClick={handleAddNewUser}
                                 label="Submit"
                                 />
-                          </div>
+                            </div>
                     </form>
             </Modal>
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import withReactContent from "sweetalert2-react-content";
-import { Link, useNavigate } from "react-router-dom";
-import { useCookies, Cookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 
 import Button from "../../components/Button";
@@ -11,7 +11,7 @@ import Chill from "../../assets/Chill.webp";
 import Swal from "../../utils/Swal";
 
 const Login = () => {
-    const [cookies, setCookie] = useCookies(["token", "id", "role"]);
+    const [cookies, setCookie] = useCookies(["token"]);
     const MySwal = withReactContent(Swal);
     const navigate = useNavigate();
     const [disabled, setDisabled] = useState<boolean>(true);
@@ -49,7 +49,6 @@ const Login = () => {
             .then((res) =>{
                 const { message } = res.data;
                 setCookie("token", res.data.data.token, { path: "/" });
-                setCookie("id", res.data.data.id, { path: "/" });
                 MySwal.fire({
                     title: "Hello!",
                     text: "Login Success!",
