@@ -6,7 +6,6 @@ import withReactContent from "sweetalert2-react-content";
 import Swal from "../../utils/Swal";
 import Input from '../../components/Input'
 import Layout from '../../components/Layout'
-import jwt_decode from "jwt-decode";
 
 interface EditProps {
     item?: any
@@ -21,9 +20,8 @@ const EditClass: React.FC<EditProps> = ({item}) => {
     const location = useLocation()
     const [loading, setLoading] = useState(false)
     const [cookies, setCookie, removeCookie] = useCookies();
-    const decoded:any = jwt_decode(cookies.token)
     const [detailClass, setDetailClass] = useState({item})
-    const [name, setName] = useState("")
+    const [name, setName] = useState("") 
     const [mentor, setMentor]= useState(0)
     const [date_start, setDateStart] = useState("")
     const [date_graduate, setDateGraduate] = useState('')

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import withReactContent from "sweetalert2-react-content";
 import Swal from "../../utils/Swal";
-import jwt_decode from "jwt-decode";
 
 import Layout from "../../components/Layout";
 import SideBar from "../../components/SideBar";
@@ -25,7 +24,6 @@ const ClassPage = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [cookies, setCookie, removeCookie] = useCookies();
-    const decoded:any = jwt_decode(cookies.token)
     const [name, setName] = useState("")
     const [mentor, setMentor]= useState(0)
     const [date_start, setDateStart] = useState("")
@@ -51,6 +49,26 @@ const ClassPage = () => {
             setLoading(true)
             setData(response.data.data)
             console.log(response.data.data)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+
+    async function handleGetAuth(){
+        axios.get(
+        `https://app1.mindd.site/auth/users`
+        ,{
+            headers: {
+                Accept : 'application/json',
+                'Content-Type': 'application/json',
+                Authorization : `Bearer ${cookies.token}`
+            }
+        }
+        )
+        .then((response) => {
+            setCookie("role", response.data.data.role, { path: "/class" });
+            setCookie("id", response.data.data.id, { path: "/class" });
         })
         .catch((error) => {
             console.log(error)
@@ -104,7 +122,6 @@ const ClassPage = () => {
                 text: "Add New Class Success!",
                 showCancelButton: false,
             });
-            setReload(true)
         })
         .catch((error) => {
             console.log(error)
@@ -146,6 +163,7 @@ const ClassPage = () => {
 useEffect(()=>{
     handleGetClass()
     handleGetUser()
+    handleGetAuth()
 },[])
     return (
         <Layout> 
@@ -160,7 +178,7 @@ useEffect(()=>{
             />
         <div className="flex flex-col w-full mx-80">
             <Navbar
-            name={decoded.role}
+            name={cookies.role}
             />
                 <BoxClass
                 handleToAddClass={()=> setShowModal(true)}

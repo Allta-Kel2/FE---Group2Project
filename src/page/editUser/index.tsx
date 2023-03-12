@@ -6,7 +6,6 @@ import withReactContent from "sweetalert2-react-content";
 import Swal from "../../utils/Swal";
 import Input from '../../components/Input'
 import Layout from '../../components/Layout'
-import jwt_decode from "jwt-decode";
 
 interface EditProps {
     item?:any
@@ -20,7 +19,6 @@ const EditUser:React.FC<EditProps> = ({item}) => {
     const navigate = useNavigate()
     const location = useLocation()
     const [cookies] = useCookies()
-    const decoded:any = jwt_decode(cookies.token)
     const [full_name, setFullName] = useState("")
     const [email, setEmail] = useState("")
     const [phone_number, setPhoneNumber] = useState("")
@@ -39,7 +37,7 @@ const EditUser:React.FC<EditProps> = ({item}) => {
         }
     ])
     const [optionStatus, setOptionsStatus] = useState('')
-    const id_detail = location?.state?.id === null ? (decoded.id) : (
+    const id_detail = location?.state?.id === null ? (cookies.id) : (
         location?.state?.id
     )
     async function getDetailUser(id_detail:any){
